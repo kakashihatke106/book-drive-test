@@ -1,0 +1,33 @@
+<header>
+    <nav class="navbar ">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fs-1" href="/"><strong>Book DriveTest</strong></a>
+            <ul class="navbar-nav flex-row ms-auto align-items-center">
+                <li class="nav-item px-2">
+                    <a class="nav-link " aria-current="page" href="/">DASHBOARD</a>
+                </li>
+                <%if(isdriver){%>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="/g2">G2_TEST</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link active" href="/g">G_TEST</a>
+                    </li>
+                    <%}%>
+                        <%if(!islogedin){%>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="/login">LOGIN</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="/register">REGISTER</a>
+                            </li>
+                            <%}%>
+                                <li class="nav-item px-2">
+                                    <form action="/logout">
+                                        <button type="submit" class="bg-transparent border-0">Logout</button>
+                                    </form>
+                                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
