@@ -1,19 +1,19 @@
 const usersmodel = require("../models/usersmodel")
 
-exports.auth =async (req,res,next)=>{
-    try{
+exports.auth = async (req, res, next) => {
+    try {
         console.log(req.session.userid)
         const user = await usersmodel.findById(req.session.userid)
         console.log(user)
-        if(!user){
+        if (!user) {
             return res.redirect('/login')
         }
-    if(user.UserType != 'Driver'){
-        return res.status(403).send('you are not autherized for this page')
-    }
+        if (user.UserType != 'Driver') {
+            return res.status(403).send('you are not autherized for this page')
+        }
         console.log("auth occure")
         next();
-    }catch(error){
+    } catch (error) {
         console.log(error)
         res.status(500).send("An error occure while checking you are login")
     }
