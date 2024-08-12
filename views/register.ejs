@@ -31,7 +31,7 @@
                                 placeholder="Repeat your password" required>
                         </div>
                         <div class="mb-3">
-                            <label for="userType" class="form-label">User Type</label>
+                            <label for="UserType" class="form-label">User Type</label>
                             <select class="form-select" id="UserType" name="UserType" required>
                                 <option value="Driver" selected>Driver</option>
                                 <option value="Examiner">Examiner</option>
@@ -43,23 +43,20 @@
                 </div>
             </div>
         </main>
-        <% if(error){%>
-            <script>
-                    alert("<%= error%>")
-            </script>
-            <%}%>
-            <script>
+       <%- include("./error")%>
+                <script>
 
-                function check_password() {
-                    var password = document.getElementById("password").value;
-                    var repeat_password = document.getElementById("repeat_password").value;
-                    if (password != repeat_password) {
-                        alert("please enter same password")
-                        return false;
+                    function check_password() {
+                        var password = document.getElementById("password").value;
+                        var repeat_password = document.getElementById("repeat_password").value;
+                        if (password != repeat_password) {
+                            alert("please enter same password")
+                            return false;
+                        }
+                        return true;
                     }
-                    return true;
-                }
-            </script>
+                </script>
+
 </body>
 
 </html>

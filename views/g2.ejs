@@ -13,47 +13,142 @@
 <body class="bg-secondary">
     <%- include("header")%>
 
-    <main>
-        <div class="container mt-5">
-            <form class="d-flex" method="post" action="/g2">
-                <div class="w-50 mx-2">
-                    <h2 class="mb-4">Personal Information</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName"    name="firstName" value="<%=isupdated  ? userdata.firstName  :''%>" placeholder="Enter first name" <% if (isupdated) { %>disabled<% } %> required >
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" value="<%=isupdated  ? userdata.lastName  :''%>"   name="lastName" placeholder="Enter last name"  <% if (isupdated) { %>disabled<% } %> required>
-                            <label for="licenseNumber">License Number</label>
-                            <input type="text" class="form-control" id="licenseNumber" value="<%=isupdated  ? userdata.licenseNumber  :''%>"  name="licenseNumber"
-                                placeholder="Enter license number" <% if (isupdated) { %>disabled<% } %> required>
-                            <label for="age">Age</label>
-                            <input type="number" class="form-control" id="age" value="<%=isupdated  ? userdata.age  :''%>" name="age" placeholder="Enter age"  <% if (isupdated) { %>disabled<% } %> required>
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" class="form-control" id="dob" value="<%=isupdated  ? userdata.dob.toISOString().substr(0, 10)  :''%>" name="dob"  <% if (isupdated) { %>disabled<% } %> required>
+        <main>
+            <div class="container mt-5">
+                <%if(!isupdated){%>
+                    <form class="d-flex" method="post" action="/g2" id="personal-info-form">
+                        <div class="w-50 mx-2">
+                            <h2 class="mb-4">Personal Information</h2>
+                            <div class="card">
+                                <div class="card-body">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName"
+                                        value="<%=isupdated  ? userdata.firstName  :''%>" placeholder="Enter first name"
+                                        <% if (isupdated) { %>disabled<% } %> required >
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName"
+                                            value="<%=isupdated  ? userdata.lastName  :''%>" name="lastName"
+                                            placeholder="Enter last name" <% if (isupdated) { %>disabled<% } %>
+                                            required>
+                                            <label for="licenseNumber">License Number</label>
+                                            <input type="text" class="form-control" id="licenseNumber"
+                                                value="<%=isupdated  ? userdata.licenseNumber  :''%>"
+                                                name="licenseNumber" placeholder="Enter license number" <% if
+                                                (isupdated) { %>disabled<% } %> required>
+                                                <label for="age">Age</label>
+                                                <input type="number" class="form-control" id="age"
+                                                    value="<%=isupdated  ? userdata.age  :''%>" name="age"
+                                                    placeholder="Enter age" <% if (isupdated) { %>disabled<% } %>
+                                                    required>
+                                                    <label for="dob">Date of Birth</label>
+                                                    <input type="date" class="form-control" id="dob"
+                                                        value="<%=isupdated  ? userdata.dob.toISOString().substr(0, 10)  :''%>"
+                                                        name="dob" <% if (isupdated) { %>disabled<% } %> required>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="w-50 mx-2">
-                    <h2 class="mb-4">Car Information</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <label for="make">Make</label>
-                            <input type="text" class="form-control" id="make" value="<%=isupdated ? userdata.car_detail.make  :''%>" name="make" placeholder="Enter car make"  <% if (isupdated) { %>disabled<% } %> required>
-                            <label for="model">Model</label>
-                            <input type="text" class="form-control" id="model" value="<%=isupdated  ? userdata.car_detail.model  :''%>" name="model" placeholder="Enter car model"  <% if (isupdated) { %>disabled<% } %> required>
-                            <label for="year">Year</label>
-                            <input type="number" class="form-control" id="year" value="<%=isupdated  ? userdata.car_detail.year  :''%>" name="year" placeholder="Enter car year"  <% if (isupdated) { %>disabled<% } %> required>
-                            <label for="plateNumber">Plate Number</label>
-                            <input type="text" class="form-control" id="plateNumber" value="<%=isupdated  ? userdata.car_detail.plateNumber  :''%>" name="plateNumber" placeholder="Enter plate number"  <% if (isupdated) { %>disabled<% } %> required>
-                            <button type="submit" class="btn btn-primary btn-block mt-4"  <% if (isupdated) { %>disabled<% } %>>Submit</button>
+                        <div class="w-50 mx-2">
+                            <h2 class="mb-4">Car Information</h2>
+                            <div class="card">
+                                <div class="card-body">
+                                    <label for="make">Make</label>
+                                    <input type="text" class="form-control" id="make"
+                                        value="<%=isupdated ? userdata.car_detail.make  :''%>" name="make"
+                                        placeholder="Enter car make" <% if (isupdated) { %>disabled<% } %> required>
+                                        <label for="model">Model</label>
+                                        <input type="text" class="form-control" id="model"
+                                            value="<%=isupdated  ? userdata.car_detail.model  :''%>" name="model"
+                                            placeholder="Enter car model" <% if (isupdated) { %>disabled<% } %>
+                                            required>
+                                            <label for="year">Year</label>
+                                            <input type="number" class="form-control" id="year"
+                                                value="<%=isupdated  ? userdata.car_detail.year  :''%>" name="year"
+                                                placeholder="Enter car year" <% if (isupdated) { %>disabled<% } %>
+                                                required>
+                                                <label for="plateNumber">Plate Number</label>
+                                                <input type="text" class="form-control" id="plateNumber"
+                                                    value="<%=isupdated  ? userdata.car_detail.plateNumber  :''%>"
+                                                    name="plateNumber" placeholder="Enter plate number" <% if
+                                                    (isupdated) { %>disabled<% } %> required>
+                                                    <button type="submit" class="btn btn-primary btn-block mt-4" <% if
+                                                        (isupdated) { %>disabled<% } %>>Submit</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </main>
+                    </form>
+                    <%}else if(userdata.isTestPassed !=null){%>
+                        <div class="text-white">
+                            <h1>you have <%= (userdata.isTestPassed)?"successfully passed":"failed"%> in <%=
+                                        userdata.TestType.toUpperCase()%> exam</h1>
+                            <p>comment : <%= userdata.comment %>
+                            </p>
+                        </div>
+                        <%}else if(userdata.AppointmentID){%>
+                            <div class="text-white">
+                                <h2>your appointment date is <%= userdata.AppointmentID.Date.toISOString().substr(0, 10)
+                                        %>
+                                </h2>
+                                <h2>your appointment time is <%= userdata.AppointmentID.Time%>
+                                        <%=userdata.TestType.toUpperCase()%> test
+                                </h2>
+                            </div>
+                            <%}else{%>
+                                <form action="/find-slots" id="find-slots" method="post">
+                                    <div class="mb-3">
+                                        <label for="date" class="form-label">Date</label>
+                                        <input type="date" value="<%=Date  ? Date  :''%>" class="form-control" id="Date"
+                                            name="Date" required>
+                                    </div>
+                                    <script>
+                                        document.getElementById('Date').addEventListener('change', function () {
+                                            document.getElementById('find-slots').submit();
+                                        });
+                                    </script>
+                                </form>
+                                <form action="/book-appointment" method="post">
 
+                                    <%if(slots){%>
+                                        <%if(slots.length>0){%>
+                                            <% slots.forEach(item=>{%>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        value="<%= item._id%>" name="AppointmentID">
+                                                    <label class="form-check-label" for="slot1030">
+                                                        <%= item.Time%>
+                                                    </label>
+                                                </div>
+                                                <%});%>
+                                                    <button type="submit"
+                                                        class="btn btn-primary btn-block mt-4">Submit</button>
+                                                    <%}%>
+                                                        <%}else{%>
+                                                            <h2>No slots found</h2>
+                                                            <%}%>
+                                </form>
+                                <%}%>
+            </div>
+        </main>
+        <%- include("./error")%>
+        <script>
+            document.getElementById('personal-info-form').addEventListener('submit', function(event) {
+                const dobInput = document.getElementById('dob');
+                const ageInput = document.getElementById('age');
+        
+                const dob = new Date(dobInput.value);
+                const today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                const monthDifference = today.getMonth() - dob.getMonth();
+        
+                if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+        
+                if (age < 18 || parseInt(ageInput.value, 10) < 18) {
+                    event.preventDefault();
+                    alert('You must be at least 18 years old.');
+                }
+            });
+        </script>
 </body>
 
 </html>

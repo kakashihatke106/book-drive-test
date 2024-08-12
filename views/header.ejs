@@ -6,7 +6,7 @@
                 <li class="nav-item px-2">
                     <a class="nav-link " aria-current="page" href="/">DASHBOARD</a>
                 </li>
-                <%if(isdriver){%>
+                <%if(UserType == "Driver"){%>
                     <li class="nav-item px-2">
                         <a class="nav-link" href="/g2">G2_TEST</a>
                     </li>
@@ -14,6 +14,20 @@
                         <a class="nav-link active" href="/g">G_TEST</a>
                     </li>
                     <%}%>
+                    <%if(UserType == "Admin"){%>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="/appointment">APPOINTMENT</a>
+                        </li>
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="/results">RESULTS</a>
+                        </li>
+                        <%}%>
+                        <%if(UserType == "Examiner"){%>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" href="/examiner">EXAMINER</a>
+                            </li>
+                            
+                            <%}%>
                         <%if(!islogedin){%>
                             <li class="nav-item px-2">
                                 <a class="nav-link" href="/login">LOGIN</a>
@@ -22,11 +36,13 @@
                                 <a class="nav-link" href="/register">REGISTER</a>
                             </li>
                             <%}%>
-                                <li class="nav-item px-2">
-                                    <form action="/logout">
-                                        <button type="submit" class="bg-transparent border-0">Logout</button>
-                                    </form>
-                                </li>
+                                <%if(islogedin){%>
+                                    <li class="nav-item px-2">
+                                        <form action="/logout">
+                                            <button type="submit" class="bg-transparent border-0">LOGOUT</button>
+                                        </form>
+                                    </li>
+                                    <%}%>
             </ul>
         </div>
     </nav>
